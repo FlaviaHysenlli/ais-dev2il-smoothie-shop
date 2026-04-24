@@ -9,6 +9,10 @@ logger = logging.getLogger(__name__)
 # Create the FastAPI application
 app = FastAPI(title="Kitchen Service")
 
+from prometheus_fastapi_instrumentator import Instrumentator
+# Initialize Prometheus metrics instrumentation
+Instrumentator().instrument(app).expose(app)
+
 # Configuration: How many cooks are available in the kitchen
 NUM_COOKS = 1
 
