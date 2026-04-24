@@ -13,6 +13,14 @@ from prometheus_fastapi_instrumentator import Instrumentator
 # Initialize Prometheus metrics instrumentation
 Instrumentator().instrument(app).expose(app)
 
+# Custom metric: Count smoothies ordered by flavor
+from prometheus_client import Counter
+smoothies_ordered = Counter(
+    'smoothies_ordered_total',
+    'Total number of smoothies ordered',
+    ['flavor']
+)
+
 # Configuration: How many cooks are available in the kitchen
 NUM_COOKS = 1
 
@@ -32,6 +40,8 @@ async def startup_event():
 # Endpoint: Receives requests to prepare a smoothie
 @app.post("/prepare")
 async def prepare_smoothie(order: SmoothieOrder):
+    # Increment the counter for this flavor
+    smoothies_ordered.labels(flavor=order.flavor).inc()
     logger.info(
         "Processing %s order with %s cooks available",
         order.flavor,
