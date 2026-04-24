@@ -1,0 +1,31 @@
+formatters:
+  # Log message format for the console
+  console:
+    (): uvicorn.logging.DefaultFormatter
+    datefmt: '%Y-%m-%d %H:%M:%S'
+    # You can find documentation on available variables here: https://docs.python.org/3/library/logging.html#logrecord-attributes
+    fmt: '%(levelprefix)s %(asctime)s - %(name)s - %(message)s'
+
+handlers:
+  # Loggers with this handler will output to the console
+  console:
+    class: logging.StreamHandler
+    formatter: console
+    stream: ext://sys.stdout
+
+# The root logger is going to receive all log events that are not explicitly set to not propagate
+root:
+  handlers:
+  - console
+  level: INFO
+
+# Other loggers can be configured optionally if special settings are required
+loggers:
+  kitchen_service:
+    level: DEBUG
+  uvicorn:
+    level: INFO
+
+
+version: 1
+disable_existing_loggers: false
