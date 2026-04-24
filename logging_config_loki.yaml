@@ -19,12 +19,19 @@ handlers:
     url: "http://localhost:3100/loki/api/v1/push"
     version: "1"
 
+  file:
+    class: logging.FileHandler
+    formatter: console
+    filename: logs/smoothie-shop.log
+
 # The root logger is going to receive all log events that are not explicitly set to not propagate
 root:
   handlers:
   - console
   - loki
+  - file
   level: INFO
+
 
 # Other loggers can be configured optionally if special settings are required
 loggers:

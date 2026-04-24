@@ -28,7 +28,12 @@ async def startup_event():
 # Endpoint: Receives requests to prepare a smoothie
 @app.post("/prepare")
 async def prepare_smoothie(order: SmoothieOrder):
-    logger.info(f"Received order to prepare a smoothie with flavor {order.flavor}")
+    logger.info(
+        "Processing %s order with %s cooks available",
+        order.flavor,
+        NUM_COOKS,
+        extra={"tags": {"flavor": order.flavor, "num_cooks": str(NUM_COOKS)}}
+    )
     try:
         # Try to get a cook (wait max 2 seconds)
         logger.debug(f"Waiting for a cook to become available")

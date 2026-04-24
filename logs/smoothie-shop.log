@@ -1,0 +1,11 @@
+[32mINFO[0m:     2026-04-24 09:47:35 - uvicorn.error - Will watch for changes in these directories: ['C:\\Users\\User\\Desktop\\AIS_Semester2\\ais-dev2il-smoothie-shop']
+[32mINFO[0m:     2026-04-24 09:47:35 - uvicorn.error - Uvicorn running on [1mhttp://127.0.0.1:8001[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2026-04-24 09:47:35 - uvicorn.error - Started reloader process [[36m[1m10192[0m] using [36m[1mStatReload[0m
+[32mINFO[0m:     2026-04-24 09:47:37 - uvicorn.error - Started server process [[36m18988[0m]
+[32mINFO[0m:     2026-04-24 09:47:37 - uvicorn.error - Waiting for application startup.
+[32mINFO[0m:     2026-04-24 09:47:37 - kitchen_service - Kitchen Service started | Cooks: 1
+[32mINFO[0m:     2026-04-24 09:47:37 - uvicorn.error - Application startup complete.
+[32mINFO[0m:     2026-04-24 09:48:06 - kitchen_service - Processing pineapple order with 1 cooks available
+[36mDEBUG[0m:    2026-04-24 09:48:06 - kitchen_service - Waiting for a cook to become available
+[32mINFO[0m:     2026-04-24 09:48:08 - kitchen_service - Smoothie with flavor pineapple prepared
+[32mINFO[0m:     2026-04-24 09:48:08 - uvicorn.access - 127.0.0.1:58016 - "POST /prepare HTTP/1.1" 200
