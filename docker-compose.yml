@@ -18,6 +18,17 @@ services:
     networks:
       - observability
 
+  jaeger:
+    image: jaegertracing/all-in-one:1.54
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "4317:4317"    # OTLP gRPC receiver
+      - "4318:4318"    # OTLP HTTP receiver
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    networks:
+      - observability
+
   grafana:
     image: grafana/grafana:10.2.3
     ports:
@@ -30,7 +41,10 @@ services:
       - observability
     depends_on:
       - loki
+      - prometheus
+      - jaeger
 
 networks:
   observability:
     driver: bridge
+
